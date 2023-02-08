@@ -1,4 +1,4 @@
-Role Name
+pgsql-backup
 =========
 
 Install and configure script for automated backups of PostgreSQL Databases https://github.com/fukawi2/pgsql-backup
@@ -33,6 +33,8 @@ roles:
     name: sergeeximius.pgsql-backup
 ```
 
+playbook.yml
+    ---
     - hosts: servers
       roles:
          - role: sergeeximius.pgsql-backup
@@ -45,4 +47,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Sergey Sedov serge.eximius@gmail.com
