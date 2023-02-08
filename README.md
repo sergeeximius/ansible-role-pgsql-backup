@@ -35,11 +35,12 @@ roles:
 ```
 
 playbook.yml
-    ---
-    - hosts: servers
-      roles:
-         - role: sergeeximius.pgsql-backup
-
+```
+---
+- hosts: servers
+  roles:
+    - role: sergeeximius.pgsql-backup
+```
 License
 -------
 
