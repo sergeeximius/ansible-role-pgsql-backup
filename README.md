@@ -10,11 +10,12 @@ Debian/Ubuntu only
 
 Role Variables
 --------------
-
+```
 pgsql_backup_dbhost: "localhost"
 pgsql_backup_dbuser: "backup"
 pgsql_backup_dbpassword: "StrongPassword"
 pgsql_backup_destination_dir: "/mnt/backup/pgsql"
+```
 
 Dependencies
 ------------
