@@ -1,0 +1,40 @@
+---
+# tasks file for pgsql-backup
+- name: Install dependency packages
+  ansible.builtin.package:
+    name: "{{ item }}"
+  with_items:
+    - mailutils
+    - openssl
+  when: ansible_os_family == 'Debian'
+
+- name: Copy pgsql-backup script
+  ansible.builtin.copy:
+    src: pgsql-backup.sh
+    dest: /usr/local/bin/pgsql-backup.sh
+    mode: 0755
+    owner: root
+    group: root
+
+- name: Create pgsql-backup config
+  ansible.builtin.template:
+    src: "pgsql-backup.conf.j2"
+    dest: "/etc/pgsql-backup.conf"
+    mode: 0600
+    owner: root
+    group: root
+
+- name: Creates pgsql-backup cronjob
+  ansible.builtin.cron:
+    minute: "5"
+    hour: "1"
+    name: "Backup all postgresql databases"
+    job: "/usr/local/bin/pgsql-backup.sh"
+
+- name: Create backup destination directory
+  ansible.builtin.file:
+    path: "{{ pgsql_backup_destination_dir }}"
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
