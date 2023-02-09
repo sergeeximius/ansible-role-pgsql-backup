@@ -2,7 +2,7 @@
 # Naturally, this user must have full access to all the databases you wish to
 # have backed up.
 CONFIG_PGUSER={{ pgsql_backup_dbuser }}
-CONFIG_PGPASSWORD={{ pgsql_backup_dbpassword }}
+CONFIG_PGPASSWORD="{{ pgsql_backup_dbpassword }}"
 
 # Host name (or IP address) of PostgreSQL server e.g localhost
 CONFIG_PGHOST={{ pgsql_backup_dbhost }}
